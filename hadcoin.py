@@ -91,7 +91,7 @@ class Blockchain:
     max_length = len(self.chain)
 
     for node in network:
-      response = requests.get(f'http://{node}/get-chain')
+      response = requests.get('http://'+ node +'/get-chain')
       if response.status_code == 200:
         length = response.json()['length']
         chain = response.json()['chain']
@@ -159,7 +159,7 @@ def add_transaction():
     return 'Some elements of the transaction are missing', 400
   
   index = blockchain.add_transaction(json['sender'], json['receiver'], json['amount'])
-  response = {'message': f'This transaction will be added to block {index}'}
+  response = {'message': 'This transaction will be added to block ' + index}
 
   return jsonify(response), 201
 
