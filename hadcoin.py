@@ -159,7 +159,7 @@ def add_transaction():
     return 'Some elements of the transaction are missing', 400
   
   index = blockchain.add_transaction(json['sender'], json['receiver'], json['amount'])
-  response = {'message': 'This transaction will be added to block ' + index}
+  response = {'message': 'This transaction will be added to block ' + str(index)}
 
   return jsonify(response), 201
 
